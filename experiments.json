@@ -14,5 +14,9 @@
   {
     "url": "/4-pin",
     "name": "4 Pin"
+  },
+  {
+    "url": "/5-variables",
+    "name": "5 Variables"
   }
 ]
