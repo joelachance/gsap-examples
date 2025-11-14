@@ -23,11 +23,46 @@ export function remap(
   return t * (outMax - outMin) + outMin;
 }
 
-// Example usages of lerp:
-// lerp(0, 10, 0)    // => 0   (start)
-// lerp(0, 10, 0.5)  // => 5   (halfway)
-// lerp(0, 10, 1)    // => 10  (end)
-// lerp(5, 15, 0.25) // => 7.5 (a quarter of the way from 5 to 15)
+/**
+ * Linearly interpolates a value between `a` and `b` by the interpolation factor `t`.
+ *
+ * @param {number} a - The start value.
+ * @param {number} b - The end value.
+ * @param {number} t - The interpolation factor, typically between 0 (returns `a`) and 1 (returns `b`).
+ * @returns {number} The interpolated value between `a` and `b` at `t`.
+ */
 export function lerp(a: number, b: number, t: number) {
   return a + (b - a) * t;
+}
+
+
+
+/**
+ * Calculates the dimensions and offset (x, y) needed to scale and center content so that it fully covers a container,
+ * maintaining its aspect ratio (like CSS `background-size: cover`).
+ *
+ * @param {number} containerWidth - The width of the container.
+ * @param {number} containerHeight - The height of the container.
+ * @param {number} contentWidth - The original width of the content.
+ * @param {number} contentHeight - The original height of the content.
+ * @returns {{ x: number, y: number, width: number, height: number }} The top-left coordinates (x, y) and size (width, height) for the content.
+ */
+export function fitContent(
+  containerWidth: number,
+  containerHeight: number,
+  contentWidth: number,
+  contentHeight: number
+) {
+  const scale = Math.max(
+    containerWidth / contentWidth,
+    containerHeight / contentHeight
+  );
+
+  const width = contentWidth * scale;
+  const height = contentHeight * scale;
+
+  const x = (containerWidth - width) / 2;
+  const y = (containerHeight - height) / 2;
+
+  return { x, y, width, height };
 }
