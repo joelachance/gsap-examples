@@ -96,13 +96,11 @@ export default function Page() {
   const onPointerEnterCb = useCallback<PointerEventHandler<HTMLHeadingElement>>(
     (event) => {
       const rect = event.currentTarget.getClientRects()[0];
-      // console.log();
-
       setSnap({
         x: 50,
         y: 50,
-        w: rect.width,
-        h: rect.height,
+        w: rect.width + 20,
+        h: rect.height + 10,
       });
     },
     []
@@ -113,17 +111,17 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="w-screen h-screen bg-black text-white flex items-center justify-center">
+    <div className="w-screen h-screen bg-black text-green-400 flex items-center justify-center">
       <h1
         onPointerEnter={onPointerEnterCb}
         onPointerLeave={onPointerLeaveCb}
         className={cn(
-          "uppercase text-[10vh] leading-none relative cursor-default",
+          "uppercase text-[10vh] leading-none relative cursor-default pl-[0.1em] opacity-60 hover:opacity-100",
           s["title"]
         )}
         ref={titleRef}
       >
-        snap
+        Start
       </h1>
 
       <div

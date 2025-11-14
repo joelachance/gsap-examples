@@ -1,6 +1,6 @@
 "use client";
 
-import { DrawSVGPlugin, ScrollTrigger } from "gsap/all";
+import { DrawSVGPlugin, ScrollTrigger, SplitText } from "gsap/all";
 import gsap from "gsap";
 import { Highlighted1, Highlighted2, Highlighted3 } from "./highlights";
 import { useGSAP } from "@gsap/react";
@@ -8,6 +8,7 @@ import { useRef } from "react";
 
 gsap.registerPlugin(DrawSVGPlugin);
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(SplitText);
 
 export default function Page() {
   return (
@@ -45,6 +46,13 @@ function DescriptionSection() {
 
   useGSAP(
     () => {
+      SplitText.create("h2", {
+        type: "words, chars, lines",
+        wordsClass: "title-word++",
+        linesClass: "title-line++",
+        mask: "lines",
+      });
+
       const tl = gsap.timeline({
         scrollTrigger: {
           start: "top top",
@@ -56,14 +64,21 @@ function DescriptionSection() {
         },
       });
 
-      tl.from("h2", {
-        opacity: 0,
+      tl.from(".title-line", {
+        y: "100%",
+        stagger: 0.1,
         duration: 1,
+        ease: "power2.out",
       });
 
       tl.from("path", {
         drawSVG: 0,
-        stagger: 0.5,
+        stagger: 0.8,
+        duration: 1,
+      });
+
+      tl.to("h2", {
+        duration: 3,
       });
     },
     {

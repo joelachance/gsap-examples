@@ -22,6 +22,6 @@
   transition: width 0.2s, height 0.2s;
 
   position: fixed;
-  border: solid 1px white;
+  border: solid 2px currentcolor;
   pointer-events: none;
 }

@@ -22,5 +22,9 @@
   {
     "url": "/6-custom-cursor",
     "name": "6 Custom Cursor"
+  },
+  {
+    "url": "/7-image-sequence",
+    "name": "7 Image Sequence"
   }
 ]
