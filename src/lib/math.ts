@@ -35,8 +35,6 @@ export function lerp(a: number, b: number, t: number) {
   return a + (b - a) * t;
 }
 
-
-
 /**
  * Calculates the dimensions and offset (x, y) needed to scale and center content so that it fully covers a container,
  * maintaining its aspect ratio (like CSS `background-size: cover`).
