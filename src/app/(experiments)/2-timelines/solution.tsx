@@ -24,9 +24,8 @@ export default function Page() {
       const tl = gsap.timeline();
 
       tl.from(".title-word1 .title-char", {
+        y: "100%",
         duration: 0.5,
-        autoAlpha: 0,
-        y: 100,
         stagger: 0.07,
         ease: "circ.out",
       });
@@ -34,9 +33,8 @@ export default function Page() {
       tl.from(
         ".title-word2 .title-char",
         {
+          x: "-100%",
           duration: 0.2,
-          autoAlpha: 0,
-          x: -100,
           stagger: 0.07,
           ease: "circ.inOut",
         },
@@ -44,11 +42,30 @@ export default function Page() {
       );
 
       tl.from(
+        ".tl-start",
+        {
+          height: 0,
+          duration: 0.4,
+          ease: "circ.out",
+        },
+        "<"
+      );
+
+      tl.from(
+        ".tl-main",
+        {
+          width: 0,
+          duration: 0.8,
+          ease: "circ.out",
+        },
+        "<+0.2s"
+      );
+
+      tl.from(
         ".title-word3 .title-char",
         {
+          y: "-100%",
           duration: 0.3,
-          autoAlpha: 0,
-          y: -100,
           stagger: 0.07,
           ease: "circ.out",
         },
@@ -61,31 +78,11 @@ export default function Page() {
           opacity: 1,
           duration: 0.01,
           repeat: 6,
-          repeatDelay: 0.05,
           yoyo: true,
+          repeatDelay: 0.05,
           ease: "circ.out",
         },
-        "-=0.1s"
-      );
-
-      tl.from(
-        ".tl-start",
-        {
-          height: 0,
-          duration: 0.4,
-          ease: "circ.out",
-        },
-        0.2
-      );
-
-      tl.from(
-        ".tl-main",
-        {
-          width: 0,
-          duration: 0.8,
-          ease: "circ.out",
-        },
-        0.4
+        1
       );
 
       GSDevTools.create({ animation: tl });
