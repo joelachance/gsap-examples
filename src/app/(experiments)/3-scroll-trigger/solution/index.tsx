@@ -27,9 +27,9 @@ function DescriptionSection() {
     () => {
       const tl = gsap.timeline({
         scrollTrigger: {
+          trigger: "h2",
           start: "top center",
           end: "bottom 10%",
-          trigger: ".title-container",
           markers: true,
           toggleActions: "play reset play reverse",
         },
@@ -40,10 +40,14 @@ function DescriptionSection() {
         duration: 1,
       });
 
-      tl.from("path", {
-        drawSVG: 0,
-        stagger: 0.5,
-      });
+      tl.from(
+        "path",
+        {
+          drawSVG: 0,
+          stagger: 0.3,
+        },
+        "-=0.4"
+      );
     },
     {
       scope: containerRef,

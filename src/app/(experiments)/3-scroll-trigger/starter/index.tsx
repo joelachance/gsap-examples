@@ -1,7 +1,10 @@
 "use client";
 
+import { useRef } from "react";
 import { Highlighted1, Highlighted2, Highlighted3 } from "./highlights";
 import { TitleSection } from "./title";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 export default function Page() {
   return (
@@ -14,8 +17,27 @@ export default function Page() {
 }
 
 function DescriptionSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      const tl = gsap.timeline();
+
+      tl.from("h2", {
+        opacity: 0,
+        duration: 1,
+      });
+    },
+    {
+      scope: containerRef,
+    }
+  );
+
   return (
-    <div className="h-screen w-screen p-10 flex items-stretch justify-stretch">
+    <div
+      ref={containerRef}
+      className="h-screen w-screen p-10 flex items-stretch justify-stretch"
+    >
       <div className="title-container border-2 border-(--line) p-10 w-full flex items-center justify-center">
         <h2 className="text-[6vh] leading-[1.4] text-center text-balance max-w-7xl">
           <ScrollTriggerWord /> enables anyone to create{" "}
