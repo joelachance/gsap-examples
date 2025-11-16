@@ -4,7 +4,7 @@ import { OrthographicCamera, useTexture } from "@react-three/drei";
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
 import { useMemo, useEffect, useRef } from "react";
 
-import { createQuadGeometry, useFluid } from "./fluid";
+import { createQuadGeometry, useFluid } from "./fluid-simulation";
 import * as THREE from "three";
 
 export function ShaderEffect() {
