@@ -4,7 +4,7 @@ import { OrthographicCamera, useTexture } from "@react-three/drei";
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
 import { useMemo, useEffect, useRef } from "react";
 
-import { useFluid } from "./fluid";
+import { createQuadGeometry, useFluid } from "./fluid";
 import * as THREE from "three";
 
 export default function Page() {
@@ -160,8 +160,4 @@ const fragmentShader = /*glsl*/ `
   }
 `;
 
-const quadGeometry = new THREE.BufferGeometry();
-const positions = new Float32Array([-1, -1, 3, -1, -1, 3]);
-const uvs = new Float32Array([0, 0, 2, 0, 0, 2]);
-quadGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 2));
-quadGeometry.setAttribute("uv", new THREE.BufferAttribute(uvs, 2));
+const quadGeometry = createQuadGeometry();

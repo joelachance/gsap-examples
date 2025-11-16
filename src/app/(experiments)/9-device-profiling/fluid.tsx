@@ -251,12 +251,26 @@ function createDoubleFBO(
   return fbo;
 }
 
-function createQuadGeometry() {
+export function createQuadGeometry() {
   const geometry = new THREE.BufferGeometry();
   const positions = new Float32Array([-1, -1, 3, -1, -1, 3]);
   const uvs = new Float32Array([0, 0, 2, 0, 0, 2]);
-  geometry.setAttribute("position", new THREE.BufferAttribute(positions, 2));
-  geometry.setAttribute("uv", new THREE.BufferAttribute(uvs, 2));
+
+  const positionAttribute = new THREE.BufferAttribute(positions, 2);
+  positionAttribute.setUsage(THREE.StaticDrawUsage);
+  geometry.setAttribute("position", positionAttribute);
+
+  const uvAttribute = new THREE.BufferAttribute(uvs, 2);
+  uvAttribute.setUsage(THREE.StaticDrawUsage);
+  geometry.setAttribute("uv", uvAttribute);
+
+  // Manually set bounding sphere to avoid NaN errors
+  // The triangle covers from -1 to 3 in both dimensions
+  geometry.boundingSphere = new THREE.Sphere(
+    new THREE.Vector3(1, 1, 0),
+    Math.sqrt(8)
+  );
+
   return geometry;
 }
 
