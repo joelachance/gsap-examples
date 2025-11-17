@@ -23,11 +23,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         audiowide.variable,
         geistMono.variable,
         geistMono.className,
-        s.section
+        s.section,
+        "relative"
       )}
     >
       <div className="fixed z-10 inset-0 bg-linear-to-t from-black to-[#1B1B1B]" />
       <div className="relative z-20">{children}</div>
+      <div className={cn("absolute z-30 left-0 h-full w-8 top-0", s.ruler)} />
+      <div className={cn("absolute z-30 right-0 h-full w-8 top-0", s.ruler)} />
     </div>
   );
 }

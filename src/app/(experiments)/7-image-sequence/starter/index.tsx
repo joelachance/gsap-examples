@@ -65,7 +65,7 @@ export default function Page() {
         <h1 className="uppercase fixed text-[8vw] w-full text-center -bottom-[0.1em] leading-none right-[0.05em] tracking-widest text-transparent">
           Perseverance
         </h1>
-        <div className="cameras fixed top-1/2 -translate-y-1/2 right-8 max-w-full w-lg text-white opacity-0">
+        <div className="cameras fixed top-1/2 -translate-y-1/2 right-10 max-w-full w-md text-white opacity-0">
           <h2 className="text-6xl mb-2">Cameras</h2>
           <p className="text-balance">
             Mounted on the &quot;head&quot; of the rover&apos;s long-necked
@@ -74,7 +74,7 @@ export default function Page() {
             materials that could be related to past life on Mars.
           </p>
         </div>
-        <div className="wheels fixed bottom-8 left-8 max-w-full w-lg text-white opacity-0">
+        <div className="wheels fixed bottom-10 left-16 max-w-full w-md text-white opacity-0">
           <h2 className="text-6xl mb-2">Wheels</h2>
           <p className="text-balance">
             The wheels are made of aluminium, with cleats for traction and
