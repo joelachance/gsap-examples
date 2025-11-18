@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { SplitText, ScrollTrigger } from "gsap/all";
 import { fitContent, remap } from "@/lib/math";
-import { cn } from "@/lib/utils";
 
 import heroImage from "./assets/0001.webp";
 import cameraImage from "./assets/0130.webp";
@@ -110,18 +109,8 @@ export default function Page() {
       className="motion-safe:h-[400vh] motion-reduce:bg-black"
     >
       {!reducedMotion && <ImageSequence progress={progress} />}
-      <div
-        className={cn(
-          "relative w-full overflow-clip",
-          !reducedMotion && "h-screen"
-        )}
-      >
-        <section
-          className={cn(
-            "title h-screen fixed w-full",
-            reducedMotion && "relative"
-          )}
-        >
+      <div className="relative w-full overflow-clip motion-safe:h-screen">
+        <section className="title h-screen fixed w-full motion-reduce:relative">
           <NextImage
             src={heroImage}
             alt="Perseverance rover"
@@ -131,12 +120,7 @@ export default function Page() {
             Perseverance
           </h1>
         </section>
-        <section
-          className={cn(
-            "cameras fixed h-screen w-full top-0 left-0 opacity-0",
-            reducedMotion && "relative opacity-100"
-          )}
-        >
+        <section className="cameras fixed h-screen w-full top-0 left-0 motion-safe:opacity-0 motion-reduce:relative">
           <NextImage
             src={cameraImage}
             alt="Perseverance rover cameras"
@@ -152,12 +136,7 @@ export default function Page() {
             </p>
           </div>
         </section>
-        <section
-          className={cn(
-            "wheels fixed h-screen w-full opacity-0",
-            reducedMotion && "relative opacity-100"
-          )}
-        >
+        <section className="wheels fixed h-screen w-full motion-safe:opacity-0 motion-reduce:relative">
           <NextImage
             src={wheelsImage}
             alt="Perseverance rover wheels"

@@ -45,15 +45,15 @@ export default function Page() {
           duration: 0.4,
         })
         .to(
-          "h1",
+          ".title",
           {
-            opacity: 0,
+            autoAlpha: 0,
             duration: 0.1,
           },
           "<+0.01"
         )
         .to(".cameras", {
-          opacity: 1,
+          autoAlpha: 1,
           repeat: 1,
           yoyo: true,
           duration: 0.1,
@@ -66,7 +66,7 @@ export default function Page() {
         .to(
           ".wheels",
           {
-            opacity: 1,
+            autoAlpha: 1,
             duration: 0.2,
           },
           "-=0.2"
@@ -78,25 +78,31 @@ export default function Page() {
   return (
     <div ref={containerRef} className="h-[400vh]">
       <ImageSequence progress={progress} />
-      <div className="h-screen relative w-full overflow-clip">
-        <h1 className="uppercase fixed text-[8vw] w-full text-center -bottom-[0.1em] leading-none right-[0.05em] tracking-widest text-transparent">
-          Perseverance
-        </h1>
-        <section className="cameras fixed top-1/2 -translate-y-1/2 right-10 max-w-full w-md text-white opacity-0">
-          <h2 className="text-6xl mb-2">Cameras</h2>
-          <p className="text-balance">
-            Mounted on the &quot;head&quot; of the rover&apos;s long-necked
-            mast. The SuperCam on the Perseverance rover examines rocks and
-            soils with a camera, laser, and spectrometers to seek chemical
-            materials that could be related to past life on Mars.
-          </p>
+      <div className="relative w-full overflow-clip">
+        <section className="title h-screen fixed w-full">
+          <h1 className="uppercase absolute text-[8vw] w-full text-center -bottom-[0.1em] leading-none right-[0.05em] tracking-widest text-transparent">
+            Perseverance
+          </h1>
         </section>
-        <section className="wheels fixed bottom-10 left-16 max-w-full w-md text-white opacity-0">
-          <h2 className="text-6xl mb-2">Wheels</h2>
-          <p className="text-balance">
-            The wheels are made of aluminium, with cleats for traction and
-            curved titanium spokes for springy support.
-          </p>
+        <section className="cameras fixed h-screen w-full top-0 left-0 opacity-0">
+          <div className="absolute top-1/2 -translate-y-1/2 right-10 max-w-full w-md text-white">
+            <h2 className="text-6xl mb-2">Cameras</h2>
+            <p className="text-balance">
+              Mounted on the &quot;head&quot; of the rover&apos;s long-necked
+              mast. The SuperCam on the Perseverance rover examines rocks and
+              soils with a camera, laser, and spectrometers to seek chemical
+              materials that could be related to past life on Mars.
+            </p>
+          </div>
+        </section>
+        <section className="wheels fixed h-screen w-full opacity-0">
+          <div className="absolute bottom-10 left-16 max-w-full w-md text-white">
+            <h2 className="text-6xl mb-2">Wheels</h2>
+            <p className="text-balance">
+              The wheels are made of aluminium, with cleats for traction and
+              curved titanium spokes for springy support.
+            </p>
+          </div>
         </section>
       </div>
     </div>
