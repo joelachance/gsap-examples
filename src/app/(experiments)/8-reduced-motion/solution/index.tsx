@@ -45,6 +45,9 @@ export default function Page() {
       });
 
       if (reducedMotion) {
+        gsap.from("section.title", {
+          autoAlpha: 0,
+        });
         return;
       }
 
