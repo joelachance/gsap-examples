@@ -5,6 +5,11 @@ import { Highlighted1, Highlighted2, Highlighted3 } from "./highlights";
 import { TitleSection } from "./title";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollTrigger, DrawSVGPlugin } from "gsap/all";
+import { useControls } from "leva";
+
+gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(DrawSVGPlugin);
 
 export default function Page() {
   return (
@@ -19,17 +24,42 @@ export default function Page() {
 function DescriptionSection() {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const { stagger } = useControls({
+    stagger: {
+      value: 0.3,
+      min: 0,
+      max: 0.9,
+      step: 0.1,
+    },
+  });
+
   useGSAP(
     () => {
-      const tl = gsap.timeline();
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: 'h2',
+          start: 'top center',
+          end: 'bottom center',
+          toggleActions: 'play reverse play reverse',
+          markers: true,
+        },
+      });
 
       tl.from("h2", {
         opacity: 0,
         duration: 1,
       });
+
+      tl.from("path", {
+        drawSVG: 0,
+        duration: 0.3,
+        stagger: stagger // the lexa useControls stagger value.
+      })
     },
     {
       scope: containerRef,
+      dependencies: [stagger],
+      revertOnUpdate: true,
     }
   );
 
